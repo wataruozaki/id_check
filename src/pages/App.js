@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Create from "./Create";
 
@@ -11,15 +11,26 @@ import NumSearch from "./NumSearch";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={TopPage} />
-        <Route exact path="/create" component={Create} />
-        <Route exact path="/numsearch" component={NumSearch} />
-        <Route exact path="/thanks" component={Thanks} />
-      </Switch>
-    </BrowserRouter>
+    <>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <TopPage />
+          </Route>
+          <Route exact path="/create">
+            <Create />
+          </Route>
+
+          <Route exact path="/numsearch">
+            <NumSearch />
+          </Route>
+          <Route exact path="/thanks">
+            <Thanks />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 

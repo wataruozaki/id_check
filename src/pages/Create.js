@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
+import axios from "axios";
 import {
   TextField,
   Button,
@@ -166,13 +166,14 @@ const Create = () => {
                   helperText={errors.phoneNumber && errors.phoneNumber.message}
                 />
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={6}>
                 <TextField
                   className={classes.nameField}
                   label="〒"
                   name="postCode"
                   id="postCode"
                   variant="outlined"
+                  value={postCode}
                   onChange={(e) => setPostCode(e.target.value)}
                   inputRef={register({
                     required: "必須項目です",
@@ -237,6 +238,8 @@ const Create = () => {
                 open={open}
                 onClose={handleClose}
                 closeAfterTransition
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
               >
                 <Paper className={classes.modalPaper}>
                   <h3>体温を記入してください</h3>
@@ -255,6 +258,7 @@ const Create = () => {
                     color="primary"
                     size="large"
                     onClick={handleSubmitValue}
+                    disabled={unCreatable}
                   >
                     送信
                   </Button>

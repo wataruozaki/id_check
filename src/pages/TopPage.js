@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Paper, Grid, Button, makeStyles } from "@material-ui/core";
+import Example from "./Example";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -44,6 +45,7 @@ const TopPage = () => {
           </Grid>
         </Grid>
       </Paper>
+      <Example />
     </div>
   );
 };
